@@ -1,21 +1,25 @@
-
-import React, { useState } from 'react';
-import { Sparkles, Zap, Quote, Rocket } from 'lucide-react';
-import FireworkCanvas from './components/FireworkCanvas';
-import CountdownTimer from './components/CountdownTimer';
-import { generateNewYearWish } from './services/gemini';
+import React, { useState } from "react";
+import { Sparkles, Zap, Quote, Rocket } from "lucide-react";
+import FireworkCanvas from "./components/FireworkCanvas";
+import CountdownTimer from "./components/CountdownTimer";
+import { generateNewYearWish } from "./services/gemini";
 
 const App: React.FC = () => {
-  const [wish, setWish] = useState<string>('');
+  const [wish, setWish] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   const getNewWish = async () => {
     setLoading(true);
     try {
-      const result = await generateNewYearWish("Bạn", "Năm mới 2026 Bính Ngọ, mã đáo thành công, vạn sự như ý");
-      setWish(result || '');
+      const result = await generateNewYearWish(
+        "Bạn",
+        "Năm mới 2026 Bính Ngọ, mã đáo thành công, vạn sự như ý"
+      );
+      setWish(result || "");
     } catch (error) {
-      setWish("Chúc bạn năm mới 2026 Bính Ngọ: Mạnh mẽ như thần mã, thành công rực rỡ!");
+      setWish(
+        "Chúc bạn năm mới 2026 Bính Ngọ: Mạnh mẽ như thần mã, thành công rực rỡ!"
+      );
     } finally {
       setLoading(false);
     }
@@ -38,26 +42,28 @@ const App: React.FC = () => {
           Năm Bính Ngọ 2026
         </div>
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter italic leading-none text-center">
-          HAPPY <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-500">NEW YEAR</span>
+          HAPPY{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-500">
+            NEW YEAR
+          </span>
         </h1>
       </div>
 
       {/* Main Container: Linh vật và Lời chúc */}
       <div className="relative z-10 w-full max-w-4xl flex flex-col items-center gap-6">
-        
         {/* Hình ảnh Linh vật (Horse 2026) */}
         <div className="relative group w-full max-w-md aspect-[16/9] md:aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-orange-500/10">
-          <img 
-            src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&q=80&w=1000" 
+          <img
+            src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&q=80&w=1000"
             alt="Mã Đáo Thành Công 2026"
             className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-1000"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
           <div className="absolute bottom-4 left-0 w-full text-center">
-             <div className="flex items-center justify-center gap-2 text-orange-400 font-space font-bold italic tracking-widest text-lg">
-                <Rocket className="w-5 h-5" />
-                MÃ ĐÁO THÀNH CÔNG
-             </div>
+            <div className="flex items-center justify-center gap-2 text-orange-400 font-space font-bold italic tracking-widest text-lg">
+              <Rocket className="w-5 h-5" />
+              MÃ ĐÁO THÀNH CÔNG
+            </div>
           </div>
         </div>
 
@@ -71,12 +77,13 @@ const App: React.FC = () => {
               </div>
             ) : (
               <p className="text-base md:text-xl font-medium italic text-slate-200 leading-relaxed px-2">
-                {wish || "Chạm vào nút bên dưới để nhận thông điệp năm mới từ trí tuệ nhân tạo."}
+                {wish ||
+                  "Chạm vào nút bên dưới để nhận thông điệp năm mới từ trí tuệ nhân tạo."}
               </p>
             )}
           </div>
 
-          <button 
+          <button
             onClick={getNewWish}
             disabled={loading}
             className="group relative px-8 py-3 bg-white text-black font-black rounded-xl hover:bg-orange-500 hover:text-white transition-all active:scale-95 flex items-center gap-2 shadow-lg overflow-hidden"
@@ -94,7 +101,7 @@ const App: React.FC = () => {
           <CountdownTimer targetDate="2026-01-01T00:00:00" />
         </div>
         <p className="text-[10px] tracking-[0.2em] text-slate-500 font-bold uppercase">
-          Nexus Vision 2026 • AI Powered Experience
+          Happy new year 2026 • Quy Nguyen Quang
         </p>
       </div>
     </div>
