@@ -15,7 +15,7 @@
 ```bash
 # Clone dự án
 git clone <repository-url>
-cd copy-of-nexus-2026_-new-year-vision
+nexus-2026_-new-year-vision
 
 # Cài đặt dependencies
 npm install
